@@ -282,7 +282,9 @@ const init = () => {
 	bindEvents();
 
 	// Start game.
-	startGame();
+	window.requestAnimationFrame(() => {
+		startGame();
+	});
 };
 
 // =======
