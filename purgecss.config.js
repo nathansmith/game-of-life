@@ -11,6 +11,5 @@ module.exports = {
 	// Allow these selectors.
 	safelist: [
 		// Add to this list, as needed.
-		/rkv-table-of-contents/,
 	],
 };

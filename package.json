@@ -25,6 +25,7 @@
 		"prettier": "^2.2.1",
 		"purgecss": "^4.0.3",
 		"sass": "^1.32.11",
+		"typescript": "^4.2.4",
 		"vite": "^2.2.3"
 	},
 	"browserslist": [
