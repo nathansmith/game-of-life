@@ -1,8 +1,14 @@
+// ======
+// Types.
+// ======
+
+import { IGrid, IOptions, IState } from './_types';
+
 // ==========
 // App state.
 // ==========
 
-const appState = {
+const appState: IState = {
 	generation: 0,
 	isPlaying: true,
 };
@@ -19,7 +25,9 @@ const COLOR_DEAD = '#fff';
 
 const CLICK = 'click';
 const CONTEXT_2D = '2d';
+const HEIGHT = 'height';
 const RESIZE = 'resize';
+const WIDTH = 'width';
 
 const CANVAS_SELECTOR = '.gol-canvas';
 const COUNTER_SELECTOR = '.gol-counter';
@@ -30,28 +38,28 @@ const DATA_STOP_SELECTOR = '[data-gol-button="stop"]';
 // Get first generation.
 // =====================
 
-const getFirstGen = (options = {}) => {
+const getFirstGen = (options: IOptions): IGrid => {
 	// Options.
 	const { gridCols, gridRows } = options;
 
 	// Build rows.
-	const gridLayout = new Array(gridRows).fill(null).map(() => {
+	const firstGen: IGrid = new Array(gridRows).fill(0).map(() => {
 		// Build columns.
-		return new Array(gridCols).fill(null).map(() => {
+		return new Array(gridCols).fill(0).map(() => {
 			// 1 or 0.
 			return Math.floor(Math.random() * 2);
 		});
 	});
 
 	// Expose array.
-	return gridLayout;
+	return firstGen;
 };
 
 // ====================
 // Get next generation.
 // ====================
 
-const getNextGen = (currentGen = [], options = {}) => {
+const getNextGen = (currentGen: IGrid, options: IOptions) => {
 	// Increment counter.
 	appState.generation++;
 
@@ -59,10 +67,10 @@ const getNextGen = (currentGen = [], options = {}) => {
 	const { genCounter, gridCols, gridRows } = options;
 
 	// Update counter.
-	genCounter.textContent = appState.generation;
+	genCounter.textContent = String(appState.generation);
 
 	// Copy list.
-	const nextGen = currentGen.map((row = []) => {
+	const nextGen: IGrid = currentGen.map((row: Array<number>) => {
 		// Faster than "..." spread.
 		return [].concat(row);
 	});
@@ -127,7 +135,7 @@ const getNextGen = (currentGen = [], options = {}) => {
 // Render grid.
 // ============
 
-const renderGrid = (currentGen = [], options = {}) => {
+const renderGrid = (currentGen: IGrid, options: IOptions): void => {
 	// Options.
 	const { canvasContext, gridCols, gridRows } = options;
 
@@ -135,6 +143,7 @@ const renderGrid = (currentGen = [], options = {}) => {
 	for (let rowIndex = 0; rowIndex < gridRows; rowIndex++) {
 		// Loop through cols.
 		for (let colIndex = 0; colIndex < gridCols; colIndex++) {
+			// Get cell value.
 			const cellValue = currentGen[rowIndex][colIndex];
 
 			// Start path.
@@ -159,16 +168,16 @@ const renderGrid = (currentGen = [], options = {}) => {
 // Call updates.
 // =============
 
-const renderNextGen = (currentGen = [], options = {}) => {
+const renderNextGen = (currentGen: IGrid, options: IOptions): void => {
 	// Get next gen.
-	const nextGen = getNextGen(currentGen, options);
+	const nextGen: IGrid = getNextGen(currentGen, options);
 
 	// Render grid.
 	renderGrid(nextGen, options);
 
 	// Keep going?
 	if (appState.isPlaying && appState.generation < MAX_GENERATIONS) {
-		window.requestAnimationFrame(() => {
+		window.requestAnimationFrame((): void => {
 			renderNextGen(nextGen, options);
 		});
 	}
@@ -178,18 +187,18 @@ const renderNextGen = (currentGen = [], options = {}) => {
 // Start game.
 // ===========
 
-const startGame = () => {
+const startGame = (): void => {
 	// Get counter.
-	const genCounter = document.querySelector(COUNTER_SELECTOR);
+	const genCounter: Element = document.querySelector(COUNTER_SELECTOR);
 
 	// Get canvas.
-	const canvas = document.querySelector(CANVAS_SELECTOR);
+	const canvas: HTMLCanvasElement = document.querySelector(CANVAS_SELECTOR);
 
 	// Get context.
-	const canvasContext = canvas.getContext(CONTEXT_2D);
+	const canvasContext: CanvasRenderingContext2D = canvas.getContext(CONTEXT_2D);
 
 	// Get computed style.
-	const pageStyle = window.getComputedStyle(document.documentElement);
+	const pageStyle: CSSStyleDeclaration = window.getComputedStyle(document.documentElement);
 
 	// Get width.
 	const canvasWidth = parseFloat(pageStyle.width);
@@ -212,11 +221,11 @@ const startGame = () => {
 	};
 
 	// Set canvas dimensions.
-	canvas.width = canvasWidth;
-	canvas.height = canvasHeight;
+	canvas.setAttribute(WIDTH, String(canvasWidth));
+	canvas.setAttribute(HEIGHT, String(canvasHeight));
 
 	// Get first gen.
-	const firstGen = getFirstGen(options);
+	const firstGen: IGrid = getFirstGen(options);
 
 	// Start render.
 	renderNextGen(firstGen, options);
@@ -226,7 +235,7 @@ const startGame = () => {
 // Event: stop.
 // ============
 
-const handleClickStop = () => {
+const handleClickStop = (): void => {
 	appState.isPlaying = false;
 };
 
@@ -234,12 +243,12 @@ const handleClickStop = () => {
 // Event: restart.
 // ===============
 
-const handleClickRestart = () => {
+const handleClickRestart = (): void => {
 	// Stop.
 	appState.isPlaying = false;
 
 	// Non-blocking.
-	window.requestAnimationFrame(() => {
+	window.requestAnimationFrame((): void => {
 		// Reset.
 		appState.generation = 0;
 		appState.isPlaying = true;
@@ -253,7 +262,7 @@ const handleClickRestart = () => {
 // Event: resize.
 // ==============
 
-const handleResize = () => {
+const handleResize = (): void => {
 	// Stop.
 	handleClickStop();
 };
@@ -262,10 +271,10 @@ const handleResize = () => {
 // Bind events.
 // ============
 
-const bindEvents = () => {
+const bindEvents = (): void => {
 	// Get buttons.
-	const buttonRestart = document.querySelector(DATA_RESTART_SELECTOR);
-	const buttonStop = document.querySelector(DATA_STOP_SELECTOR);
+	const buttonRestart: Element = document.querySelector(DATA_RESTART_SELECTOR);
+	const buttonStop: Element = document.querySelector(DATA_STOP_SELECTOR);
 
 	// Prevent doubles.
 	buttonRestart.removeEventListener(CLICK, handleClickRestart);
@@ -282,12 +291,12 @@ const bindEvents = () => {
 // Kickoff.
 // ========
 
-const init = () => {
+const init = (): void => {
 	// Bind events.
 	bindEvents();
 
 	// Start game.
-	window.requestAnimationFrame(() => {
+	window.requestAnimationFrame((): void => {
 		startGame();
 	});
 };
