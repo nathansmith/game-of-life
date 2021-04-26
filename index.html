@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8" />
+
+		<link rel="icon" href="./favicon.ico" />
+
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+		/>
+
+		<link rel="stylesheet" href="./src/styles/index.scss" />
+
+		<title>Game of Life</title>
+	</head>
+	<body>
+		<canvas class="gol-canvas"></canvas>
+
+		<div class="gol-controls">
+			<p>
+				<b>
+					Generation: <span class="gol-counter">1</span>
+				</b>
+			</p>
+
+			<ul class="gol-list-inline">
+				<li>
+					<button type="button" class="gol-button" data-gol-button="stop">Stop</button>
+				</li>
+
+				<li>
+					<button type="button" class="gol-button" data-gol-button="restart">Restart</button>
+				</li>
+			</ul>
+
+			<ul class="gol-list-inline">
+				<li>
+					<a href="https://github.com/nathansmith/game-of-life">View code</a>
+				</li>
+
+				<li>
+					<a href="">What is this?</a>
+				</li>
+			</ul>
+		</div>
+
+		<script type="module" src="./src/js/index.js"></script>
+	</body>
+</html>

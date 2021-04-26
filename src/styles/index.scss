@@ -1,0 +1,108 @@
+// ================
+// Global elements.
+// ================
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	overflow: hidden;
+}
+
+html {
+	font-family: sans-serif;
+	line-height: 1.5;
+}
+
+a {
+	color: #fff;
+	padding: 0.25em;
+}
+
+a:hover {
+	background: #fff;
+	color: #000;
+}
+
+p,
+ul {
+	margin-bottom: 1.5rem;
+}
+
+// =======
+// Canvas.
+// =======
+
+.gol-canvas {
+	width: 100vw;
+	height: 100vh;
+}
+
+// =========
+// Controls.
+// =========
+
+.gol-controls {
+	color: #fff;
+	background-color: rgba(#000, 0.8);
+	padding-top: 1.5rem;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+	transform: translateX(-50%);
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+}
+
+// =============
+// List: inline.
+// =============
+
+.gol-list-inline {
+	display: flex;
+	list-style: none;
+	margin-top: -1.5rem;
+	margin-left: -0.75rem;
+	margin-right: -0.75rem;
+}
+
+.gol-list-inline > li {
+	padding-top: 1.5rem;
+	padding-left: 0.75rem;
+	padding-right: 0.75rem;
+}
+
+// ========
+// Buttons.
+// ========
+
+.gol-button {
+	appearance: none;
+	color: #000;
+	background-color: #fff;
+	border-color: #fff;
+	border-style: solid;
+	border-width: 1px;
+	cursor: pointer;
+	font-size: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+	text-transform: uppercase;
+	white-space: nowrap;
+
+	height: 3em;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+}
+
+.gol-button:hover {
+	color: #fff;
+	background-color: #000;
+}
+
+.gol-button:active {
+	transform: translateY(1px);
+}
