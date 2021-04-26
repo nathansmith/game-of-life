@@ -52,7 +52,7 @@ const getFirstGen = (options = {}) => {
 // ====================
 
 const getNextGen = (currentGen = [], options = {}) => {
-	// TODO: REMOVE THIS.
+	// Increment counter.
 	appState.generation++;
 
 	// Options.
