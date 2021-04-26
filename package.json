@@ -15,17 +15,17 @@
 		"@typescript-eslint/eslint-plugin": "^4.22.0",
 		"@typescript-eslint/parser": "^4.22.0",
 		"autoprefixer": "^10.2.5",
-		"browserslist": "4.16.4",
-		"eslint": "^7.24.0",
-		"eslint-config-prettier": "^8.2.0",
+		"browserslist": "4.16.5",
+		"eslint": "^7.25.0",
+		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-prettier": "^3.4.0",
 		"html-minifier": "^4.0.0",
 		"husky": "^6.0.0",
 		"lint-staged": "^10.5.4",
 		"prettier": "^2.2.1",
 		"purgecss": "^4.0.3",
-		"sass": "^1.32.10",
-		"vite": "^2.1.5"
+		"sass": "^1.32.11",
+		"vite": "^2.2.3"
 	},
 	"browserslist": [
 		"defaults",

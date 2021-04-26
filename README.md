@@ -1,6 +1,6 @@
 # game-of-life
 
-Yet another JavaScript implementation of Conway's Game of Life.
+Yet another implementation of Conway's Game of Life, using TypeScript.
 
 - https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
