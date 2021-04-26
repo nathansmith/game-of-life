@@ -89,13 +89,18 @@ const getNextGen = (currentGen = [], options = {}) => {
 					}
 
 					// Get offsets.
-					const x = colIndex + colOffset;
-					const y = rowIndex + rowOffset;
+					const colPointer = colIndex + colOffset;
+					const rowPointer = rowIndex + rowOffset;
 
 					// Account for edges.
-					if (x >= 0 && y >= 0 && x < gridCols && y < gridRows) {
+					if (
+						colPointer >= 0 &&
+						rowPointer >= 0 &&
+						colPointer < gridCols &&
+						rowPointer < gridRows
+					) {
 						// Get current neighbor.
-						const currentNeighbor = currentGen[y][x];
+						const currentNeighbor = currentGen[rowPointer][colPointer];
 
 						// Add to total.
 						livingNeighbors += currentNeighbor;
