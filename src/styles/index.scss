@@ -3,28 +3,23 @@
 // ================
 
 * {
+	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 }
 
 html,
 body {
+	min-height: 100%;
 	overflow: hidden;
 }
 
 html {
+	color: #000;
+	background-color: #fff;
+
 	font-family: sans-serif;
 	line-height: 1.5;
-}
-
-a {
-	color: #fff;
-	padding: 0.25em;
-}
-
-a:hover {
-	background: #fff;
-	color: #000;
 }
 
 p,
@@ -32,13 +27,24 @@ ul {
 	margin-bottom: 1.5rem;
 }
 
+*:focus:not(:focus-visible) {
+	outline: 0;
+}
+
 // =======
 // Canvas.
 // =======
 
 .gol-canvas {
-	width: 100vw;
-	height: 100vh;
+	pointer-events: none;
+	user-select: none;
+
+	width: 100%;
+	height: 100%;
+
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 // =========
@@ -46,15 +52,27 @@ ul {
 // =========
 
 .gol-controls {
-	color: #fff;
-	background-color: rgba(#000, 0.8);
-	padding-top: 1.5rem;
-	padding-left: 1.5rem;
-	padding-right: 1.5rem;
-	transform: translateX(-50%);
-	position: absolute;
-	left: 50%;
-	bottom: 0;
+	& {
+		color: #fff;
+		background-color: rgba(#000, 0.8);
+		padding-top: 1.5rem;
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+		transform: translateX(-50%);
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+	}
+
+	a {
+		color: inherit;
+		padding: 0.25em;
+	}
+
+	a:hover {
+		background: #fff;
+		color: #000;
+	}
 }
 
 // =============
@@ -91,6 +109,7 @@ ul {
 	font-family: inherit;
 	font-weight: inherit;
 	text-transform: uppercase;
+	user-select: none;
 	white-space: nowrap;
 
 	height: 3em;
