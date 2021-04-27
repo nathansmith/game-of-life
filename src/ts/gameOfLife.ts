@@ -211,7 +211,7 @@ const startGame = (): void => {
 	const gridRows = Math.floor(canvasHeight / CANVAS_RESOLUTION);
 
 	// Bundle options.
-	const options = {
+	const options: IOptions = {
 		canvasContext,
 		canvasHeight,
 		canvasWidth,
