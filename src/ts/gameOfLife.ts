@@ -64,10 +64,10 @@ const getNextGen = (currentGen: IGrid, options: IOptions): IGrid => {
 	appState.generation++;
 
 	// Options.
-	const { genCounter, gridCols, gridRows } = options;
+	const { genCountSpan, gridCols, gridRows } = options;
 
 	// Update counter.
-	genCounter.textContent = String(appState.generation);
+	genCountSpan.textContent = String(appState.generation);
 
 	// Copy list.
 	const nextGen: IGrid = currentGen.map((row: number[]): number[] => {
@@ -189,7 +189,7 @@ const renderNextGen = (currentGen: IGrid, options: IOptions): void => {
 
 const startGame = (): void => {
 	// Get counter.
-	const genCounter: Element = document.querySelector(COUNTER_SELECTOR);
+	const genCountSpan: Element = document.querySelector(COUNTER_SELECTOR);
 
 	// Get canvas.
 	const canvas: HTMLCanvasElement = document.querySelector(CANVAS_SELECTOR);
@@ -215,7 +215,7 @@ const startGame = (): void => {
 		canvasContext,
 		canvasHeight,
 		canvasWidth,
-		genCounter,
+		genCountSpan,
 		gridCols,
 		gridRows,
 	};

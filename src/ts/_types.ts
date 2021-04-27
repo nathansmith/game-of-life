@@ -12,7 +12,7 @@ export interface IOptions {
 	canvasContext: CanvasRenderingContext2D;
 	canvasHeight: number;
 	canvasWidth: number;
-	genCounter: Element;
+	genCountSpan: Element;
 	gridCols: number;
 	gridRows: number;
 }
