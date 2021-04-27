@@ -43,9 +43,9 @@ const getFirstGen = (options: IOptions): IGrid => {
 	const { gridCols, gridRows } = options;
 
 	// Build rows.
-	const firstGen: IGrid = new Array(gridRows).fill(0).map(() => {
+	const firstGen: IGrid = new Array(gridRows).fill(null).map((): number[] => {
 		// Build columns.
-		return new Array(gridCols).fill(0).map(() => {
+		return new Array(gridCols).fill(null).map((): number => {
 			// 1 or 0.
 			return Math.floor(Math.random() * 2);
 		});
@@ -59,7 +59,7 @@ const getFirstGen = (options: IOptions): IGrid => {
 // Get next generation.
 // ====================
 
-const getNextGen = (currentGen: IGrid, options: IOptions) => {
+const getNextGen = (currentGen: IGrid, options: IOptions): IGrid => {
 	// Increment counter.
 	appState.generation++;
 
@@ -70,7 +70,7 @@ const getNextGen = (currentGen: IGrid, options: IOptions) => {
 	genCounter.textContent = String(appState.generation);
 
 	// Copy list.
-	const nextGen: IGrid = currentGen.map((row: Array<number>) => {
+	const nextGen: IGrid = currentGen.map((row: number[]): number[] => {
 		// Faster than "..." spread.
 		return [].concat(row);
 	});

@@ -2,7 +2,7 @@
 // Types.
 // ======
 
-export type IGrid = Array<Array<number>>;
+export type IGrid = number[][];
 
 // ===========
 // Interfaces.
