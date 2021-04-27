@@ -71,7 +71,13 @@ const getNextGen = (currentGen: IGrid, options: IOptions): IGrid => {
 
 	// Copy list.
 	const nextGen: IGrid = currentGen.map((row: number[]): number[] => {
-		// Faster than "..." spread.
+		/*
+			Using `.concat()` is faster than `...` spread.
+
+			From a practical standpoint, it doesn't matter.
+
+			- https://twitter.com/wesbos/status/1356324828249280517
+		*/
 		return [].concat(row);
 	});
 
