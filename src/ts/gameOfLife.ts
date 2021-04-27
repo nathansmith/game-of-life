@@ -263,8 +263,14 @@ const handleClickRestart = (): void => {
 // ==============
 
 const handleResize = (): void => {
-	// Stop.
-	handleClickStop();
+	/*
+		Android triggeres "resize" when clicking
+		a link from another app. This allows the
+		animation to at least *start* correctly.
+	*/
+	if (1 < appState.generation) {
+		handleClickStop();
+	}
 };
 
 // ============
