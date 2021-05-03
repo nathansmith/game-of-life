@@ -108,8 +108,8 @@ const getNextGen = (currentGen: IGrid, options: IOptions): IGrid => {
 
 					// Account for edges.
 					if (
-						colPointer >= 0 &&
-						rowPointer >= 0 &&
+						0 <= colPointer &&
+						0 <= rowPointer &&
 						colPointer < gridCols &&
 						rowPointer < gridRows
 					) {
