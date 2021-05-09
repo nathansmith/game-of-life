@@ -5,10 +5,11 @@ export default {
 	},
 	build: {
 		outDir: 'html',
-		rollupOptions: [
-			{
-				input: 'index.html',
-			},
-		],
+		rollupOptions: {
+			input: [
+				// Add to this list.
+				'index.html',
+			],
+		},
 	},
 };
