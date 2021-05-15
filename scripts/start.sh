@@ -1,1 +1,1 @@
-vite --config vite.config.js
+vite --config './vite.config.js'

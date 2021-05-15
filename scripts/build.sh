@@ -1,3 +1,3 @@
 vite build \
 --base='./' \
---config vite.config.js
+--config './vite.config.js'
