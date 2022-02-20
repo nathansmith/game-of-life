@@ -9,15 +9,13 @@
 		"plugin:prettier/recommended",
 		"plugin:@typescript-eslint/recommended"
 	],
-	"ignorePatterns": ["/build", "/coverage", "/dist", "/src/svg-icons"],
+	"ignorePatterns": ["/build", "/coverage", "/dist"],
 	"parserOptions": {
 		"ecmaVersion": 2018,
-		"sourceType": "module",
-		"ecmaFeatures": {
-			"jsx": true
-		}
+		"sourceType": "module"
 	},
 	"rules": {
+		"@typescript-eslint/no-var-requires": "off",
 		"func-style": [
 			"error",
 			"expression",
@@ -31,15 +29,9 @@
 				"allow": ["warn", "error"]
 			}
 		],
-		"no-unused-vars": "error",
 		"no-var": "error",
+		"no-unused-vars": "error",
 		"prefer-arrow-callback": "error",
-		"prefer-const": "error",
-		"react/no-unescaped-entities": "off"
-	},
-	"settings": {
-		"react": {
-			"version": "detect"
-		}
+		"prefer-const": "error"
 	}
 }
